@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<!-- 
+	Configuration that enforces deployment of a web app in a root context on Jetty.
+	
+	IMPORTANT: DO NOT REFORMAT THIS FILE WITH IDE XML FORMATTERS, 
+	as line breaks introduced in XML do not play well 
+	with Jetty. 
+-->
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+	<Set name="contextPath">/cms</Set>
+</Configure>

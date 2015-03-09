@@ -13,6 +13,12 @@
 
 	<properties>
 
+		<!-- Sencha Cmd properties -->
+
+		<sencha-build-type>testing</sencha-build-type>
+        <desktop.app>Demo</desktop.app>
+
+
 		<!-- standard Maven properties -->
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -250,6 +256,53 @@
 		</pluginManagement>
 
 		<plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warSourceIncludes>
+                        WEB-INF/**
+                    </warSourceIncludes>
+
+					<webResources>
+                        <resource>
+                            <directory>${project.build.directory}/sencha-package/</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+       		<plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <tasks>
+                                <exec executable="sencha" dir="${basedir}/src/main/webapp/" failonerror="true">
+                                    <arg value="app" />
+                                    <arg value="build" />
+                                    <arg value="${sencha-build-type}" />
+                                </exec>
+
+                                <copy todir="${project.build.directory}/sencha-package/">
+                                    <fileset dir="${project.basedir}/src/main/webapp">
+                                        <include name="index.html" />
+                                    </fileset>
+                                </copy>
+                                
+ 								<copy todir="${project.build.directory}/sencha-package/">
+                                    <fileset dir="${project.basedir}/src/main/webapp/build/${sencha-build-type}/${desktop.app}" />
+                                </copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
 			<!-- Generate Cayenne classes in Maven; of course you can do the same 
 				using Modeler -->

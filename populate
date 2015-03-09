@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+curl -i -X POST 'http://127.0.0.1:8080/domain' \
+     -d '{"vhost":"mysite1.example.org","name":"My Site #1"}'
+
+echo
+echo
+echo "---------"
+curl -i -X POST 'http://127.0.0.1:8080/domain' \
+     -d '{"vhost":"mysite2.example.org","name":"My Site #2"}'
+
+echo
+echo
+echo "---------"
+curl -i -X POST 'http://127.0.0.1:8080/domain/1/articles' \
+     -d '[
+          {"title":"LinkRest Presentation","body":"Here is how to use LinkRest"},
+          {"title":"Cayenne Goodies", "body":"This is an article about Apache Cayenne"}
+         ]'
+
+echo
+echo
+echo "---------"
+curl -i -X POST 'http://127.0.0.1:8080/domain/2/articles' \
+     -d '[
+          {"title":"LinkRest Presentation","body":"Here is how to use LinkRest"},
+          {"title":"Cayenne Goodies", "body":"This is an article about Apache Cayenne"}
+         ]'
+
+echo
+echo
+echo "---------"
+curl -i -X PUT 'http://127.0.0.1:8080/link-rest-cms-demo/domain/2/articles' \
+     -d '{"id":1,"title":"LinkRest latest Presentation"}'

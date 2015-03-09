@@ -14,12 +14,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.nhl.link.rest.runtime.LinkRestBuilder;
+import com.nhl.link.rest.runtime.adapter.sencha.SenchaAdapter;
 
 /**
  * A Jersey framework-specific JAX-RS Application class that allows us to
  * bootstrap Cayenne and LinkRest.
  */
-@ApplicationPath("/")
+@ApplicationPath("/rest")
 public class JaxRsApplication extends ResourceConfig {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JaxRsApplication.class);
@@ -34,8 +35,12 @@ public class JaxRsApplication extends ResourceConfig {
 		this.cayenneRuntime = createCayenne(derbyManager.getUrl(), derbyManager.getDriver());
 
 		// init and bootstrap LinkRest
-		register(LinkRestBuilder.build(cayenneRuntime));
-
+		register(
+			LinkRestBuilder.builder(cayenneRuntime)
+			.adapter(new SenchaAdapter())
+			.build()
+		);
+		
 		// expose application REST endpoints
 		packages(ArticleSubResource.class.getPackage().getName());
 	}
