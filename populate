@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-curl -i -X POST 'http://127.0.0.1:8080/domain' \
-     -d '{"vhost":"mysite1.example.org","name":"My Site #1"}'
+curl -i -X POST 'http://127.0.0.1:8080/cms/rest/domain' \
+     -d '{"id": "some-id-1", "vhost":"mysite1.example.org","name":"My Site #1"}'
 
 echo
 echo
