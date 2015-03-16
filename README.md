@@ -13,13 +13,9 @@ If you want to build a real app based on this example, start by cloning the proj
 
 Sencha Cmd v5.1.2.52
 
+Java 1.8
+
 ## Building
-
-Clone and install version 1.14-SNAPSHOT of link-rest:
-
-    git clone https://github.com/nhl/link-rest.git
-    cd link-rest
-    mvn clean install
 
 Clone this demo and package it:
 
