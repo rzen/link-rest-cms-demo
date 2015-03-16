@@ -7,4 +7,5 @@ release.properties
 .classpath
 .project
 .settings
+cache.properties
 *.mwb.bak
