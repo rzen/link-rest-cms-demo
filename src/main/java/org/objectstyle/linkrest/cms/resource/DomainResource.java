@@ -43,13 +43,14 @@ public class DomainResource {
 	}
 
 	@PUT
-	public DataResponse<Domain> createOrUpdate(String data) {
+	@Path("{domainId}")
+	public DataResponse<Domain> createOrUpdate(@PathParam("domainId") int id, String data) {
 
 		// 'data' is a single object or an array of objects... Objects without
 		// IDs will be treated as "new". LinkRest will try to locate objects
 		// with IDs, and update them if found, or create if not
 
-		return LinkRest.createOrUpdate(Domain.class, config).process(data);
+		return LinkRest.createOrUpdate(Domain.class, config).id(id).process(data);
 	}
 
 	/**
