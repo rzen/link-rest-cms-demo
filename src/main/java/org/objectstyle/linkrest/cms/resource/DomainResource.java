@@ -15,9 +15,7 @@ import org.objectstyle.linkrest.cms.cayenne.Domain;
 
 import com.nhl.link.rest.DataResponse;
 import com.nhl.link.rest.LinkRest;
-import com.nhl.link.rest.MetadataBuilder;
 import com.nhl.link.rest.MetadataResponse;
-import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 
 @Path("domain")
 @Produces(MediaType.APPLICATION_JSON)
