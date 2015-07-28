@@ -15,6 +15,9 @@ import org.objectstyle.linkrest.cms.cayenne.Domain;
 
 import com.nhl.link.rest.DataResponse;
 import com.nhl.link.rest.LinkRest;
+import com.nhl.link.rest.MetadataBuilder;
+import com.nhl.link.rest.MetadataResponse;
+import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 
 @Path("domain")
 @Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +54,12 @@ public class DomainResource {
 		// with IDs, and update them if found, or create if not
 
 		return LinkRest.createOrUpdate(Domain.class, config).id(id).process(data);
+	}
+	
+	@GET
+	@Path("metadata")
+	public  MetadataResponse<Domain> getMetadata(@Context UriInfo uriInfo) {
+		return LinkRest.metadata(Domain.class, config).uri(uriInfo).forResource(DomainResource.class).process();
 	}
 
 	/**
