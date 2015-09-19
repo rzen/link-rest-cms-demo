@@ -36,7 +36,7 @@ Ext.define('Demo.view.ViewModel', {
 		articles: {
 			model: 'Demo.model.Article',
 			autoLoad: true,
-			autoSync: true,
+			autoSync: false,
 			remoteFilter: true,
 			remoteSort: true,
 			pageSize: 100,
@@ -52,6 +52,7 @@ Ext.define('Demo.view.ViewModel', {
 			proxy: {
 				type: 'linkrest',
 				url: '/cms/rest/article',
+				batchActions: true,
 				include: [
 					'id',
 					'title',

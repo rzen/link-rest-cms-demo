@@ -3,6 +3,11 @@ Ext.define('Demo.view.grid.Articles', {
 
 	xtype: 'demo_grid_articles',
 
+	requires: [
+		'Ext.form.field.TextArea',
+		'Ext.form.field.Date'
+	],
+
 	title: 'Articles',
 
 	reference: 'articlesGrid',
@@ -19,6 +24,13 @@ Ext.define('Demo.view.grid.Articles', {
 		{
 			text: 'Remove...',
 			handler: 'removeArticle'
+		},
+
+		'->',
+
+		{
+			text: 'Save All',
+			handler: 'saveAllArticles'
 		}
 	],
 

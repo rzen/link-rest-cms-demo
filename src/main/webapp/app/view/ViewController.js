@@ -27,5 +27,9 @@ Ext.define('Demo.view.ViewController', {
 		var vm = this.getView().getViewModel();
 
 		vm.getStore('articles').remove(vm.get('articlesGrid.selection'));
+	},
+
+	saveAllArticles: function () {
+		this.getView().getViewModel().getStore('articles').sync();
 	}
 });
