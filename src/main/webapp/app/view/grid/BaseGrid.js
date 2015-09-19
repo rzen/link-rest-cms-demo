@@ -44,11 +44,11 @@ Ext.define('Demo.view.grid.BaseGrid', {
 	// ],
 
 	initComponent: function() {
-		this.dockedItems = [{
-			dock: 'bottom',
-			xtype: 'pagingtoolbar',
-			store: this.store
-		}];
+		// this.dockedItems = [{
+		// 	dock: 'bottom',
+		// 	xtype: 'pagingtoolbar',
+		// 	store: this.store
+		// }];
 
 		this.callParent(arguments);
 	}

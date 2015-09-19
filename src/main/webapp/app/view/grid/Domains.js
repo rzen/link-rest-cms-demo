@@ -19,6 +19,13 @@ Ext.define('Demo.view.grid.Domains', {
 		}
 	],
 
+	bbar: {
+		xtype: 'pagingtoolbar',
+		bind: {
+			store: '{domains}'
+		}
+	},
+
 	columns: {
 		defaults: {
 			xtype: 'templatecolumn',

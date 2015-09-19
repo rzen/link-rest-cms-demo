@@ -22,6 +22,13 @@ Ext.define('Demo.view.grid.Articles', {
 		}
 	],
 
+	bbar: {
+		xtype: 'pagingtoolbar',
+		bind: {
+			store: '{articles}'
+		}
+	},
+
 	columns: {
 		defaults: {
 			xtype: 'templatecolumn',
